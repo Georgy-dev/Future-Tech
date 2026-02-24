@@ -15,7 +15,7 @@ class InputMask {
             });
         } else {
             console.error(
-                `Library "IMask" is undefined! Please check it's connection and try again`
+                `Library "IMask" is undefined! Please check it's connection and try again`,
             );
         }
     }
