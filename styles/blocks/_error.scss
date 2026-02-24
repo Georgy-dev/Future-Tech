@@ -1,0 +1,101 @@
+@use "../helpers" as *;
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    &__wrapper {
+        width: 100%;
+        height: 80%;
+        display: grid;
+        column-gap: fluid(150, 50);
+
+        @include mobile-above {
+            grid-template-columns: auto 1fr;
+        }
+
+        @include mobile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            row-gap: rem(30);
+            text-align: center;
+        }
+    }
+
+    &__title {
+        font-size: fluid(300, 100);
+        color: var(--color-accent);
+        align-self: center;
+
+        translate: -100%;
+        opacity: 0;
+        animation: load_title 0.7s forwards;
+
+        @keyframes load_title {
+            100% {
+                opacity: 1;
+                translate: 0%;
+            }
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include mobile {
+            row-gap: rem(40);
+        }
+    }
+
+    &__description {
+        color: var(--color-light);
+        font-size: fluid(70, 30);
+
+        // scale: 10;
+        opacity: 0;
+        animation: load_desc 0.7s 1s both;
+
+        @keyframes load_desc {
+            100% {
+                scale: 1;
+                opacity: 1;
+            }
+        }
+    }
+
+    &__accent {
+        font-size: fluid(200, 40);
+        color: var(--color-accent);
+
+        translate: 50% -200%;
+        rotate: 90deg;
+        animation: load_accent 0.7s 0.5s both;
+
+        @keyframes load_accent {
+            100% {
+                translate: 0 0;
+                rotate: 0deg;
+            }
+        }
+    }
+
+    &__link {
+        padding: fluid(60, 30) fluid(100, 60);
+        font-size: fluid(40, 25);
+
+        opacity: 0;
+        animation: load_link 0.7s 1.5s forwards;
+
+        @keyframes load_link {
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+}

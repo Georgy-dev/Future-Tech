@@ -1,0 +1,152 @@
+@use "helpers" as *;
+
+html {
+    &.is-lock {
+        overflow: hidden;
+    }
+    // благодаря этому, когда у нас будет открываться меню overlay, скролл по вертикалти будет замирать
+    // то есть при открытой бургег кнопке невозможно будет скроллить основную страницу
+}
+
+body {
+    @include fluid-text(18, 14); // mixinы сначала, свойства потом!!!
+
+    font-family: var(--font-family-base);
+    letter-spacing: 0%;
+    color: var(--color-gray-50);
+    background-color: var(--color-dark);
+
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1; // чтобы растягивался по максимуму высоты
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+    color: var(--color-light);
+}
+
+h1,
+.h1,
+// h2,
+.h2,
+// h3,
+.h3 {
+    font-family: var(--font-family-accent);
+    font-weight: 500;
+}
+
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+    font-weight: 600;
+}
+
+h1,
+.h1 {
+    @include fluid-text(70, 30);
+
+    line-height: 1.2;
+    font-family: var(--font-family-accent);
+}
+
+// h2,
+.h2 {
+    @include fluid-text(58, 28);
+
+    line-height: 1.3;
+}
+
+// h3,
+.h3 {
+    @include fluid-text(40, 24);
+
+    line-height: 1.5;
+
+    font-weight: 600;
+}
+
+h4,
+.h4 {
+    @include fluid-text(26, 18);
+
+    line-height: 1.5;
+}
+
+h5,
+.h5 {
+    @include fluid-text(24, 18);
+
+    line-height: 1.5;
+
+    font-weight: 500;
+}
+
+h6,
+.h6 {
+    @include fluid-text(20, 16);
+
+    font-family: var(--font-family-base);
+
+    line-height: 1.5;
+
+    font-weight: 500;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+    transition-duration: var(--transition-duration);
+}
+
+a {
+    color: inherit;
+
+    @include hover {
+        color: var(--color-accent);
+    }
+
+    &[class] {
+        text-decoration: none; // выключаем подчеркивание ссылок, у которых есть класс
+    }
+}
+
+:focus-visible {
+    outline: rem(2) dashed var(--color-light);
+    outline-offset: rem(4);
+    transition-duration: 0s !important;
+}
+
+a,
+button {
+    &[aria-label] {
+        position: relative;
+
+        &::before {
+            content: "";
+
+            @include abs-center;
+            @include square(rem(44));
+        } // before как раз увеличивает кликабельную область
+    } // это нужно для увеличения размеров кнопки только с картинкой. То есть чтобы размеры не увеличивались, но кликабельная область была больше
+}

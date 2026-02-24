@@ -1,0 +1,81 @@
+@use "../helpers" as *;
+
+.news-card {
+    display: grid;
+    row-gap: rem(20);
+    height: 100%;
+
+    @include laptop {
+        row-gap: rem(16);
+    }
+
+    &:has(.news-card__summary) {
+        padding-block: fluid(80, 40);
+        align-items: center;
+
+        column-gap: rem(80);
+
+        @include laptop {
+            column-gap: rem(40);
+        }
+
+        @include mobile-above {
+            grid-template-areas:
+                "image other"
+                "image other"
+                "image other";
+            grid-template-columns: 32% 1fr;
+
+            .news-card {
+                &__image {
+                    grid-area: image;
+                }
+
+                &__title {
+                    @include fluid-text(32, 20);
+
+                    font-family: var(--font-family-base);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    &__image {
+        border-radius: rem(12);
+        width: 100%;
+
+        @include laptop {
+            border-radius: rem(10);
+            height: 100%;
+            object-fit: cover; // чтобы картинка не искажалась
+        }
+
+        @include mobile {
+            margin-inline: auto;
+            width: rem(500);
+        }
+    }
+
+    &__body {
+        display: grid;
+        row-gap: rem(10);
+
+        @include laptop {
+            row-gap: rem(4);
+        }
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 1rem;
+    }
+
+    &__link {
+        @include mobile-s {
+            min-width: rem(153);
+        }
+    }
+}
