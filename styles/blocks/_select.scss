@@ -55,7 +55,7 @@
             @include square(var(--size));
 
             content: "";
-            background: url("../../icons/arrow-down_white.svg") center / contain
+            background: url("../icons/arrow-down_white.svg") center / contain
                 no-repeat;
             transition-duration: var(--transition-duration);
 
